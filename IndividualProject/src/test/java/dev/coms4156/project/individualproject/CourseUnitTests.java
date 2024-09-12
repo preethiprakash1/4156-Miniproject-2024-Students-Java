@@ -34,16 +34,34 @@ public class CourseUnitTests {
 
   @Test
   public void enrollStudentTest() {
-    testCourse.enrollStudent();
+    testCourse.setEnrolledStudentCount(200);
 
-    assertEquals(501, testCourse.getEnrolledStudentCount());
+    assertTrue(testCourse.enrollStudent());
+    assertEquals(201, testCourse.getEnrolledStudentCount());
   }
 
   @Test
-  public void getEnrolledStudentCountTest() {
-    testCourse.dropStudent();
+  public void enrollStudentTest_noSpaceAvailable() {
+    testCourse.setEnrolledStudentCount(300);
 
-    assertEquals(499, testCourse.getEnrolledStudentCount());
+    assertFalse(testCourse.enrollStudent());
+    assertEquals(300, testCourse.getEnrolledStudentCount());
+  }
+
+  @Test
+  public void dropStudentTest() {
+    testCourse.setEnrolledStudentCount(300);
+
+    assertTrue(testCourse.dropStudent());
+    assertEquals(299, testCourse.getEnrolledStudentCount());
+  }
+
+  @Test
+  public void dropStudentTest_atZeroStudents() {
+    testCourse.setEnrolledStudentCount(0);
+
+    assertFalse(testCourse.dropStudent());
+    assertEquals(0, testCourse.getEnrolledStudentCount());
   }
 
   @Test
@@ -59,6 +77,11 @@ public class CourseUnitTests {
   @Test
   public void getEnrollmentCapacityTest() {
     assertEquals(250, testCourse.getEnrollmentCapacity());
+  }
+
+  @Test
+  public void getEnrolledStudentCount() {
+    assertEquals(500, testCourse.getEnrolledStudentCount());
   }
 
   @Test
