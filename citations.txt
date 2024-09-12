@@ -1,0 +1,12 @@
+1. https://spring.io/guides/gs/testing-web: Used to see how we can test the web layer of a Spring application using
+JUnit. Specifically, I used it for syntax and examples of Spring's MockMvc.
+
+2. https://www.baeldung.com/mockito-spy: How to use Mockito's spy function to spy on a mocked object.
+
+3. https://www.toptal.com/java/a-guide-to-everyday-mockito: More examples of how to use Mockito's spy function.
+
+4. https://www.digitalocean.com/community/tutorials/mockito-verify: How to use Mockito's verify function to see if a
+method was called.
+
+5. https://www.digitalocean.com/community/tutorials/mockito-mock-examples: How to mock objects using Mockito and
+helpful examples.
