@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -28,43 +32,46 @@ public class IndividualProjectApplicationUnitTests {
    */
   @BeforeEach
   public void setupIndividualProjectApplicationForTesting() {
-    individualProjectApplication = new IndividualProjectApplication();
-    MyFileDatabase myFileDatabase = new MyFileDatabase(0, filePath);
-    individualProjectApplication.overrideDatabase(myFileDatabase);
+    individualProjectApplication = spy(IndividualProjectApplication.class);
+    mockDatabase = mock(MyFileDatabase.class);
+    IndividualProjectApplication.overrideDatabase(mockDatabase);
   }
 
   @Test
   public void runTest_withSetupArg() {
-    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    System.setOut(new PrintStream(outContent));
-
     individualProjectApplication.run(new String[]{"setup"});
 
-    assertEquals("System Setup\n", outContent.toString());
+    verify(individualProjectApplication, times(1)).resetDataFile();
   }
 
   @Test
   public void runTest_withoutSetupArg() {
-    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    System.setOut(new PrintStream(outContent));
-
     individualProjectApplication.run(new String[]{});
 
-    assertEquals("Start up\n", outContent.toString());
+    verify(individualProjectApplication, times(0)).resetDataFile();
   }
 
-  // ********* HAVE TO FINISH
   @Test
-  public void resetDataFileTest() {
+  public void onTerminationTest_withSetSaveData() {
+    individualProjectApplication.setSaveData(true);
+
+    individualProjectApplication.onTermination();
+
+    verify(mockDatabase, times(1)).saveContentsToFile();
   }
 
-  // ********* HAVE TO FINISH
   @Test
-  public void onTerminationTest() {
+  public void onTerminationTest_withoutSetSaveData() {
+    individualProjectApplication.setSaveData(false);
+
+    individualProjectApplication.onTermination();
+
+    verify(mockDatabase, times(0)).saveContentsToFile();
   }
 
   /** The testIndividualProjectApplicatione instance used for testing. */
   public static IndividualProjectApplication individualProjectApplication;
+  public static MyFileDatabase mockDatabase;
   public static String filePath = "./data.txt";
 }
 
