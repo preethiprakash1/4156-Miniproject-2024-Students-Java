@@ -24,8 +24,8 @@ public class DepartmentUnitTests {
    */
   @BeforeEach
   public void setupDepartmentForTesting() {
+    testCourses = new HashMap<>();
     Course econ1105 = new Course("Waseem Noor", "417 IAB", "10:10-11:25", 210);
-    HashMap<String, Course> testCourses = new HashMap<>();
     testCourses.put("1105", econ1105);
     testDepartment = new Department("ECON", testCourses, "Michael Woodford", 2345);
   }
@@ -50,10 +50,7 @@ public class DepartmentUnitTests {
 
   @Test
   public void getCourseSelectionTest() {
-    Course econ1105 = new Course("Waseem Noor", "417 IAB", "10:10-11:25", 210);
-
-    assertTrue(testDepartment.getCourseSelection().containsKey("1105"));
-    assertTrue(checkCourseEquality(econ1105, testDepartment.getCourseSelection().get("1105")));
+    assertEquals(testCourses, testDepartment.getCourseSelection());
   }
 
   @Test
@@ -99,5 +96,8 @@ public class DepartmentUnitTests {
 
   /** The test department instance used for testing. */
   public static Department testDepartment;
+
+  /** The test courses used for testing. */
+  public static HashMap<String, Course> testCourses;
 }
 
