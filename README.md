@@ -1,14 +1,11 @@
 # README
 
 ## Bug Fixing
-For bug fixing, the static bug finder PMD was used. The following commands were run:
-- pmd check -d Course.java -R rulesets/java/quickstart.xml -f text
-- pmd check -d Department.java -R rulesets/java/quickstart.xml -f text
-- pmd check -d IndividualProjectApplication.java -R rulesets/java/quickstart.xml -f text
-- pmd check -d MyFileDatabase.java -R rulesets/java/quickstart.xml -f text
-- pmd check -d RouteController.java -R rulesets/java/quickstart.xml -f text
+For bug fixing, the static bug finder PMD was used. The following command was run:
 
-And it was ensured that all bugs found by PMD and manually are now fixed.
+pmd check -d Course.java, Department.java, MyFileDatabase.java, IndividualProjectApplication.java, RouteController.java -R rulesets/java/quickstart.xml -f text
+
+All bugs found by PMD and manually are now fixed for Course.java, Department.java, MyFileDatabase.java, IndividualProjectApplication.java, and RouteController.java.
 
 ## Style Checking
 mvn checkstyle:check command was used to fix style issues. There are no more violations or warnings.
