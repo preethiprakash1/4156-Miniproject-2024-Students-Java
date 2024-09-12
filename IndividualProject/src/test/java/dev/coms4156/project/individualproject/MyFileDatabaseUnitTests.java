@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -55,7 +56,7 @@ public class MyFileDatabaseUnitTests {
 
   @Test
   public void deSerializeObjectFromFileTest() {
-    HashMap<String, Department>  departmentMappings = myFileDatabase.deSerializeObjectFromFile();
+    Map<String, Department>  departmentMappings = myFileDatabase.deSerializeObjectFromFile();
 
     assertNotNull(departmentMappings);
   }
@@ -69,7 +70,7 @@ public class MyFileDatabaseUnitTests {
     newFileDatbase.setMapping(departmentMap);
 
     newFileDatbase.saveContentsToFile();
-    HashMap<String, Department> mapping = newFileDatbase.getDepartmentMapping();
+    Map<String, Department> mapping = newFileDatbase.getDepartmentMapping();
 
     assertEquals(department, mapping.get("CHEM"));
   }

@@ -46,7 +46,8 @@ public class RouteController {
       if (!departmentMapping.containsKey(deptCode.toUpperCase(Locale.ROOT))) {
         return new ResponseEntity<>("Department Not Found", HttpStatus.NOT_FOUND);
       } else {
-        return new ResponseEntity<>(departmentMapping.get(deptCode.toUpperCase(Locale.ROOT)).toString(),
+        return new ResponseEntity<>(departmentMapping.get(deptCode.toUpperCase(Locale.ROOT))
+                .toString(),
             HttpStatus.OK);
       }
 
