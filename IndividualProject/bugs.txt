@@ -1,20 +1,49 @@
 Course.java
+
 - In getCourseLocation() method, changed return value to this.courseLocation
 - In getInstructorName() method, changed return value to this.instructorName
 - In isCourseFull() method, changed > sign to M to ensure correct comparison
 - In enrollStudent() method, added extra logic to check whether the course is full or not
 - In dropStudent() method, added extra logic to check whether the current enrolled student count is greater than 0
+- From PMD, MissingOverride: The method 'toString()' is missing an @Override annotation -> added @Override annotation
+
+----------------------------------------------------------------------------------------------------
 
 Department.java
+
 - In getNumberOfMajors() method, got rid of the - sign in front of the return value
 - In getDepartmentChair() method, got rid of the quotations surrounding the return value
 - In toString() method, got rid of the quotations surrounding the return value
 - In dropPersonFromMajor() method, added extra logic to check whether the number of majors is greater than 0
+- From PMD, MissingOverride: The method 'toString()' is missing an @Override annotation -> added @Override annotation
+- From PMD, LooseCoupling: Avoid using implementation types like 'HashMap'; use the interface instead -> Changed all
+usages of HashMap to Map instead.
+
+----------------------------------------------------------------------------------------------------
 
 RouteController.java
+
 - Added java.util.HashMap to imports to fix unrecognized symbol HashMap
 - In retrieveDepartment, if department is not found, changed response to NOT_FOUND, and OK if successful
 - In retrieveCourse, changed response from FORBIDDEN to NOT_FOUND if course is found
 - In getMajorCtFromDept, removed "-" in front of number of majors
 - In getMajorCtFromDept, changed response from FORBIDDEN to NOT_FOUND if course is not found
 - In findCourseTime, changed "some time" static string to add logic that retrieves course time slot
+- From PMD, UnnecessaryAnnotationValueElement: Avoid the use of value in annotations when its the only element ->
+Removed "value" attribute if its the only element for RequestParam
+- From PMD, UseLocaleWithCaseConversions: When doing a String.toLowerCase()/toUpperCase() call, use a Locale ->
+Specified Locale.ROOT wherever toLowerCase() and toUpperCase() was used (in /retrieveDept).
+
+----------------------------------------------------------------------------------------------------
+
+IndividualProjectApplication.java
+
+- From PMD, LooseCoupling:	Avoid using implementation types like 'HashMap'; use the interface instead -> In
+resetDataFile lines 85 and 95, changed HashMap to Map when initializing.
+- From PMD, LiteralsFirstInComparisons:	Position literals first in String comparisons -> In run function, changed
+arg.equals("setup") to "setup".equals(arg).
+- From PMD, LooseCoupling: Avoid using implementation types like 'HashMap'; use the interface instead -> Changed
+usages of HashMap to Map in method initializations for setMapping, getDepartmentMapping, deSerializeObjectFromFile.
+Also changed HashMap to Map at the departmentMapping initialization at the very end of the file.
+- From PMD, ReturnEmptyCollectionRatherThanNull: Return an empty collection rather than null -> Returned an empty
+HashMap instead of null in the deSerializeObjectFromFile method.
