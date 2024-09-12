@@ -48,17 +48,27 @@ public class Course implements Serializable {
 
 
   public String getCourseLocation() {
-    return this.instructorName;
+    return this.courseLocation;
   }
 
 
   public String getInstructorName() {
-    return this.courseLocation;
+    return this.instructorName;
   }
 
 
   public String getCourseTimeSlot() {
     return this.courseTimeSlot;
+  }
+
+
+  public int getEnrolledStudentCount() {
+    return this.enrolledStudentCount;
+  }
+
+
+  public int getEnrollmentCapacity() {
+    return this.enrollmentCapacity;
   }
 
 
@@ -89,7 +99,7 @@ public class Course implements Serializable {
 
 
   public boolean isCourseFull() {
-    return enrollmentCapacity > enrolledStudentCount;
+    return enrollmentCapacity < enrolledStudentCount;
   }
 
   @Serial
