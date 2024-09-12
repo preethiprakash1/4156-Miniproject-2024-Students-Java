@@ -33,7 +33,7 @@ public class MyFileDatabaseUnitTests {
   @Test
   public void setGetMappingTest() {
     HashMap<String, Department> departmentMap = new HashMap<>();
-    Department newDepartment = new Department("ABC", new HashMap<>(), "John Doe", 100);
+    Department newDepartment = new Department("ABC", new HashMap<>(), "Preethi Prakash", 100);
     departmentMap.put("ABC", newDepartment);
 
     myFileDatabase.setMapping(departmentMap);
@@ -44,7 +44,7 @@ public class MyFileDatabaseUnitTests {
   @Test
   public void toStringTest() {
     HashMap<String, Department> departmentMap = new HashMap<>();
-    Department newDepartment = new Department("ABC", new HashMap<>(), "John Doe", 100);
+    Department newDepartment = new Department("ABC", new HashMap<>(), "Preethi Prakash", 100);
     departmentMap.put("ABC", newDepartment);
     String expectedString = "For the ABC department: \n" + newDepartment.toString();
 
@@ -60,10 +60,18 @@ public class MyFileDatabaseUnitTests {
     assertNotNull(departmentMappings);
   }
 
-  // ********* HAVE TO FINISH
   @Test
   public void saveContentsToFileTest() {
+    MyFileDatabase newFileDatbase = new MyFileDatabase(0, "new_data.txt");
+    Department department = new Department("CHEM", new HashMap<>(), "Laura J. Kaufman", 250);
+    HashMap<String, Department> departmentMap = new HashMap<>();
+    departmentMap.put("CHEM", department);
+    newFileDatbase.setMapping(departmentMap);
 
+    newFileDatbase.saveContentsToFile();
+    HashMap<String, Department> mapping = newFileDatbase.getDepartmentMapping();
+
+    assertEquals(department, mapping.get("CHEM"));
   }
 
   /** The test file database instance used for testing. */

@@ -72,6 +72,5 @@ public class IndividualProjectApplicationUnitTests {
   /** The testIndividualProjectApplicatione instance used for testing. */
   public static IndividualProjectApplication individualProjectApplication;
   public static MyFileDatabase mockDatabase;
-  public static String filePath = "./data.txt";
 }
 
