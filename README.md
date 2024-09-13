@@ -1,9 +1,9 @@
 # README
 
 ## Bug Fixing
-For bug fixing, the static bug finder PMD was used. The following command was run:
+For bug fixing, the static bug finder PMD was used. In the IndividualProject directory, you can run the following command:
 
-pmd check -d Course.java, Department.java, MyFileDatabase.java, IndividualProjectApplication.java, RouteController.java -R rulesets/java/quickstart.xml -f text
+pmd check -d src/main/java/dev/coms4156/project/individualproject -R rulesets/java/quickstart.xml -f text
 
 All bugs found by PMD and manually are now fixed for Course.java, Department.java, MyFileDatabase.java, IndividualProjectApplication.java, and RouteController.java.
 
