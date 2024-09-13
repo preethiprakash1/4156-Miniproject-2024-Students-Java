@@ -23,7 +23,6 @@ usages of HashMap to Map instead.
 
 RouteController.java
 
-- Added java.util.HashMap to imports to fix unrecognized symbol HashMap
 - In retrieveDepartment, if department is not found, changed response to NOT_FOUND, and OK if successful
 - In retrieveCourse, changed response from FORBIDDEN to NOT_FOUND if course is found
 - In getMajorCtFromDept, removed "-" in front of number of majors
@@ -42,6 +41,11 @@ IndividualProjectApplication.java
 resetDataFile lines 85 and 95, changed HashMap to Map when initializing.
 - From PMD, LiteralsFirstInComparisons:	Position literals first in String comparisons -> In run function, changed
 arg.equals("setup") to "setup".equals(arg).
+
+----------------------------------------------------------------------------------------------------
+
+MyFileDatabase.java
+
 - From PMD, LooseCoupling: Avoid using implementation types like 'HashMap'; use the interface instead -> Changed
 usages of HashMap to Map in method initializations for setMapping, getDepartmentMapping, deSerializeObjectFromFile.
 Also changed HashMap to Map at the departmentMapping initialization at the very end of the file.
