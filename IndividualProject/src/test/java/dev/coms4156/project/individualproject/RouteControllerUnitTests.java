@@ -116,7 +116,7 @@ public class RouteControllerUnitTests {
                     .param("courseCode", "1105"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.content().string("true"));
+            .andExpect(MockMvcResultMatchers.content().string("false"));
   }
 
   @Test
@@ -272,14 +272,14 @@ public class RouteControllerUnitTests {
   }
 
   @Test
-  public void dropStudentFromCourse() throws Exception {
+  public void dropStudentFromCourse_noStudents() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders.patch("/dropStudentFromCourse")
                     .param("deptCode", "ECON")
                     .param("courseCode", "1105"))
             .andDo(MockMvcResultHandlers.print())
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.content().string("Student has been dropped."));
-    assertEquals(499, coursesMapping.get("1105").getEnrolledStudentCount());
+            .andExpect(MockMvcResultMatchers.status().isBadRequest())
+            .andExpect(MockMvcResultMatchers.content().string("Student has not been dropped."));
+    assertEquals(0, coursesMapping.get("1105").getEnrolledStudentCount());
   }
 
   @Test

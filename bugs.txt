@@ -2,9 +2,10 @@ Course.java
 
 - In getCourseLocation() method, changed return value to this.courseLocation
 - In getInstructorName() method, changed return value to this.instructorName
-- In isCourseFull() method, changed > sign to M to ensure correct comparison
+- In isCourseFull() method, changed > sign to <= to ensure correct comparison
 - In enrollStudent() method, added extra logic to check whether the course is full or not
 - In dropStudent() method, added extra logic to check whether the current enrolled student count is greater than 0
+- Changed default enrolled student count from 500 to 0
 - From PMD, MissingOverride: The method 'toString()' is missing an @Override annotation -> added @Override annotation
 
 ----------------------------------------------------------------------------------------------------

@@ -81,7 +81,7 @@ public class CourseUnitTests {
 
   @Test
   public void getEnrolledStudentCount() {
-    assertEquals(500, testCourse.getEnrolledStudentCount());
+    assertEquals(0, testCourse.getEnrolledStudentCount());
   }
 
   @Test
@@ -127,7 +127,7 @@ public class CourseUnitTests {
   public void isCourseFullTest_courseIsAtCapacity() {
     testCourse.setEnrolledStudentCount(250);
 
-    assertFalse(testCourse.isCourseFull());
+    assertTrue(testCourse.isCourseFull());
   }
 
   @Test
