@@ -24,6 +24,8 @@ public class MyFileDatabase {
     this.filePath = filePath;
     if (flag == 0) {
       this.departmentMapping = deSerializeObjectFromFile();
+    } else {
+      this.departmentMapping = new HashMap<>();
     }
   }
 

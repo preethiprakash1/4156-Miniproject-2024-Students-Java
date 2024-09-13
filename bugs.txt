@@ -47,6 +47,7 @@ arg.equals("setup") to "setup".equals(arg).
 
 MyFileDatabase.java
 
+- In the constructor, set the departmentMapping attribute to an empty HashMap if the input flag is not 0
 - From PMD, LooseCoupling: Avoid using implementation types like 'HashMap'; use the interface instead -> Changed
 usages of HashMap to Map in method initializations for setMapping, getDepartmentMapping, deSerializeObjectFromFile.
 Also changed HashMap to Map at the departmentMapping initialization at the very end of the file.
